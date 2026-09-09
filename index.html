@@ -1,7 +1,75 @@
-<!DOCTYPE html>
-<html>
-<body>
-    <h1>안녕하세요, 제 홈페이지입니다</h1>
-    <p>GitHub Pages로 만들었습니다!</p>
-</body>
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="박정훈의 개인 홈페이지입니다. 서울대학교 컴퓨터공학부 석박통합과정." />
+    <link rel="icon" href="data:," />
+    <title>박정훈 — 컴퓨터과학 연구자</title>
+    <style>
+      :root { --cream: #f7f4ed; --ink: #1c1c1c; --muted: #5f5f5d; --line: #eceae4; --soft-ink: rgba(28, 28, 28, .04); --strong-line: rgba(28, 28, 28, .4); }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body { margin: 0; background: var(--cream); color: var(--ink); font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Noto Sans KR", sans-serif; line-height: 1.5; }
+      a { color: inherit; }
+      .container { width: min(calc(100% - 48px), 1200px); margin: 0 auto; }
+      .site-header { position: sticky; top: 0; z-index: 10; background: rgba(247, 244, 237, .92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+      .nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+      .wordmark { font-size: 1.05rem; font-weight: 600; letter-spacing: -.03em; text-decoration: none; }
+      .nav-links { display: flex; align-items: center; gap: 22px; }
+      .nav-links a { font-size: .94rem; text-decoration: underline; text-underline-offset: 4px; text-decoration-color: transparent; transition: text-decoration-color .18s ease; }
+      .nav-links a:hover, .nav-links a:focus-visible { text-decoration-color: currentColor; }
+      .button { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: 8px 16px; border-radius: 6px; font-size: .94rem; text-decoration: none; transition: opacity .18s ease, box-shadow .18s ease; }
+      .button:hover { opacity: .8; }
+      .button:focus-visible, a:focus-visible { outline: none; box-shadow: 0 4px 12px rgba(0, 0, 0, .1); }
+      .button-dark { color: #fcfbf8; background: var(--ink); box-shadow: rgba(255, 255, 255, .2) 0 .5px 0 inset, rgba(0, 0, 0, .2) 0 0 0 .5px inset, rgba(0, 0, 0, .05) 0 1px 2px; }
+      .hero { position: relative; overflow: hidden; padding: clamp(96px, 15vw, 176px) 0 112px; text-align: center; }
+      .hero::before { position: absolute; z-index: -1; inset: 7% 20% 18%; background: radial-gradient(circle at 24% 45%, rgba(246, 181, 151, .32), transparent 34%), radial-gradient(circle at 76% 38%, rgba(177, 199, 244, .35), transparent 35%), radial-gradient(circle at 52% 80%, rgba(248, 218, 160, .36), transparent 36%); filter: blur(28px); content: ""; }
+      .kicker { margin: 0 0 18px; font-size: .88rem; color: var(--muted); }
+      h1, h2, p { margin-top: 0; }
+      h1 { max-width: 900px; margin: 0 auto 24px; font-size: clamp(3.2rem, 8vw, 6.8rem); font-weight: 600; letter-spacing: -.075em; line-height: .98; }
+      .hero-copy { max-width: 600px; margin: 0 auto; color: var(--muted); font-size: clamp(1.05rem, 2vw, 1.25rem); line-height: 1.4; }
+      .hero-actions { display: flex; justify-content: center; gap: 10px; margin-top: 32px; }
+      .button-outline { border: 1px solid var(--strong-line); }
+      .section { padding: 96px 0; border-top: 1px solid var(--line); }
+      .section-heading { display: grid; grid-template-columns: minmax(180px, .75fr) 2fr; gap: 48px; align-items: start; }
+      h2 { margin: 0; font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; letter-spacing: -.05em; line-height: 1; }
+      .section-content { color: rgba(28, 28, 28, .82); font-size: 1.13rem; line-height: 1.45; }
+      .section-content p { max-width: 640px; margin-bottom: 0; }
+      .interest-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+      .interest { min-height: 128px; padding: 22px; display: flex; align-items: flex-end; border: 1px solid var(--line); border-radius: 12px; background: rgba(255, 255, 255, .12); font-size: 1.12rem; line-height: 1.2; }
+      .interest:hover { border-color: var(--strong-line); background: var(--soft-ink); }
+      .contact-card { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 32px; border: 1px solid var(--line); border-radius: 16px; }
+      .contact-card p { margin: 0; color: var(--muted); font-size: 1rem; }
+      .site-footer { padding: 56px 0 36px; border-top: 1px solid var(--line); }
+      .footer-inner { display: flex; justify-content: space-between; gap: 24px; color: var(--muted); font-size: .88rem; }
+      @media (max-width: 700px) { .container { width: min(calc(100% - 32px), 1200px); } .nav { min-height: 64px; } .nav-links { gap: 12px; } .nav-links a:not(.button) { display: none; } .hero { padding: 100px 0 80px; } .section { padding: 64px 0; } .section-heading { grid-template-columns: 1fr; gap: 28px; } .interest-grid { grid-template-columns: 1fr; } .interest { min-height: 96px; } .contact-card, .footer-inner { align-items: flex-start; flex-direction: column; } }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="container nav" aria-label="주요 메뉴">
+        <a class="wordmark" href="#top">박정훈</a>
+        <div class="nav-links"><a href="#about">소개</a><a href="#interests">관심사</a><a class="button button-dark" href="#contact">연락하기</a></div>
+      </nav>
+    </header>
+    <main id="top">
+      <section class="hero container" aria-labelledby="page-title">
+        <p class="kicker">서울대학교 컴퓨터공학부</p>
+        <h1 id="page-title">생각을 탐구하고,<br />기술로 만듭니다.</h1>
+        <p class="hero-copy">박정훈 · 서울대학교 컴퓨터공학부 석박통합과정</p>
+        <div class="hero-actions"><a class="button button-dark" href="#about">더 알아보기</a><a class="button button-outline" href="https://github.com/PJH6029" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+      </section>
+      <section id="about" class="section">
+        <div class="container section-heading"><h2>소개</h2><div class="section-content"><p>안녕하세요. 컴퓨터과학을 깊이 탐구하며, 기술로 더 나은 경험을 만드는 일에 관심을 두고 있습니다. 복잡한 문제를 차분히 이해하고, 사람에게 자연스러운 결과로 연결하는 과정을 좋아합니다.</p></div></div>
+      </section>
+      <section id="interests" class="section">
+        <div class="container section-heading"><h2>관심사</h2><div class="interest-grid"><div class="interest">컴퓨터과학 연구</div><div class="interest">인공지능</div><div class="interest">웹 개발</div><div class="interest">새로운 기술 탐구</div></div></div>
+      </section>
+      <section id="contact" class="section">
+        <div class="container section-heading"><h2>연락처</h2><div class="contact-card"><p>GitHub를 통해 제 작업을 살펴보거나 연락을 남겨 주세요.</p><a class="button button-dark" href="https://github.com/PJH6029" target="_blank" rel="noreferrer">GitHub 프로필 ↗</a></div></div>
+      </section>
+    </main>
+    <footer class="site-footer"><div class="container footer-inner"><span>© 2026 박정훈</span><span>Seoul, South Korea</span></div></footer>
+  </body>
 </html>
